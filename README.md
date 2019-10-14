@@ -3,6 +3,7 @@
 ![dart](https://github.githubassets.com/images/icons/emoji/unicode/1f3af.png)基础学习与理解
 
 * 基础语法
+* 并发
 * servlet源码
 
 ### 白皮书关键术语
@@ -40,7 +41,49 @@
 m++ 先运行在自增
 
 ### 输入输出
+* Scanner(InputStream in)
+    * 用给定的输入流创建一个Scanner对象
+* String nextLine()
+    * 读取驶入的下一行内容
+* String next()
+    * 读取驶入的下一个单词
+* int nextInt()
+* double nextDouble()
+* boolean hasNextInt()
+    * 检测是否还有表示整数或浮点数的下一个字符序列
+* boolean hasNextDouble()
 
 ### 大数值
 
 ### 数组
+
+### 循环
+**break**
+    * 终止，直接跳出循环
+**continue**
+    * 继续开始循环，不执行continue一下的命令
+    
+### 面向对象
+#### oop
+* 对象的行为(behavior)
+    * 可以对对象施加哪些操作
+* 对象的状态(state)
+    * 当施加那些方法时，对象如何响应
+* 对象的标识(identity)
+    * 如何辨别具有相同行为与状态的不同对象
+
+#### 静态域和静态方法
+* 静态域
+    * 每个类都有一个这样的域，同时每个对象对所有的实例域都有自己的拷贝，但是只有一个静态域，它属于类，不属于任何对象
+    
+* 静态常量
+    * 直接通过进行访问的常量，如Math.PI
+    
+* 静态方法
+    * 是一种不能向对象实施操作的方法，例如Math的pow方法就是一个静态方法，使用方式为Math.pow(x, a)，运算时，不使用任何Math对象，即没有隐式参数（this）
+    * 静态方法可以访问自身的静态域，可以通过类名调用这个方法
+    * 以下为两种情况下使用静态方法：
+        * 一个方法不需要访问对象装填，其所需参数都是通过显示参数提供(Math.pow)
+        * 一个方法只需要访问类的静态域(Employee.getNextId)
+        
+        
