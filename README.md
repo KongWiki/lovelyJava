@@ -193,8 +193,51 @@ x = new Employee()// ok  provided employee implements Comparable
     * 只能extends一个类
     * 可以implements多个接口
     
-** 解决默认方法冲突 **
+**解决默认方法冲突**
 1. 超类优先，如果超类提供了一个具体方法，同名而且有相同的参数类型的默认方法会被忽略
 2. 接口冲突： 如果一个超接口提供了一个默认方法，另一个接口提供了体格同名而且参数类型相同的方法，必须覆盖这个方法来解决
 
-    
+#### 接口与回调
+回调为一种程序设计模式，该模式中，可以指出某个特定时间发生是应该采取的动作，如在按下鼠标或选择某个菜单项是应该采取什么行动。
+定期的使用该动作。
+#### 对象的clone & copy
+![iamge](https://raw.githubusercontent.com/KongWiki/cloudImg/master/java-clone-copying.png)
+
+#### lambda表达式
+-> 表达式
+```java
+(first, second) -> first.length() - second.length()
+```
+其余与Python无区别
+
+### 异常、断言、日志
+![imgae](https://raw.githubusercontent.com/KongWiki/cloudImg/master/java-%E5%BC%82%E5%B8%B8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84.png)
+
+#### 记录日志
+* 可以很容易地取消全部日志记录, 或者仅仅取消某个级别的日志, 而且打开和关闭这
+个操作也很容易 。
+* 可以很简单地禁止日志记录的输出, 因此, 将这些日志代码留在程序中的开销很小 。
+* 日志记录可以被定向到不同的处理器, 用于在控制台中显示, 用于存储在文件中等 。
+* 日志记录器和处理器都可以对记录进行过滤 。 过滤器可以根据过滤实现器制定的标准
+丢弃那些无用的记录项 。
+* 日志记录可以采用不同的方式格式化, 例如, 纯文本或 XML 。
+* 应用程序可以使用多个日志记录器 , 它们使用类似包名的这种具有层次结构的名字,例如 , com . mycompany . myapp
+* 在默认情况下 , 日志系统的配置由配置文件控制 。 如果需要的话, 应用程序可以替换这个配置 。
+
+**日志记录级别**
+* SERVER
+* WARNING
+* INFO
+* CONFIG
+* FINE
+* FINER
+* FINEST
+默认只记录前三个级别，也可以自己设置
+```java
+lggger.setLevel(level.FINE);
+```
+
+### 泛型程序
+编写的代码可以被很多不同类型的对象所重用
+#### 泛型类
+具有一个或多个类型变量的类。
