@@ -5,7 +5,11 @@ package com.tran.For50;
  * @Author: kongwiki
  * @Email: kongwiki@163.com
  */
-public class Proj1 {
+public class Proj01 {
+    /**
+     * 斐波那契
+     * @param args
+     */
     public static void main(String[] args) {
         int n = 10;
         System.out.println("第"+n+"个月的兔子总数为"+fun(n));

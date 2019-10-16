@@ -5,11 +5,10 @@ package com.tran.For50;
  * @Author: kongwiki
  * @Email: kongwiki@163.com
  */
-import com.tran.For50.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Proj1.fun(10));
+        System.out.println(Proj01.fun(10));
     }
 
 }
