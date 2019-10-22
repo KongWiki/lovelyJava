@@ -6,4 +6,7 @@ package com.tran.For50;
  * @Email: kongwiki@163.com
  */
 public class Proj04 {
+    /**
+     * 分解质因数
+     */
 }
