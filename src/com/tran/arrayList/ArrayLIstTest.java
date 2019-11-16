@@ -1,8 +1,11 @@
 package com.tran.arrayList;
 
+import com.tran.Array.Arra;
 import com.tran.Inheritance.Employee;
+import org.omg.CORBA.INTERNAL;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @Time: 19-10-15下午4:17
@@ -12,15 +15,72 @@ import java.util.ArrayList;
 public class ArrayLIstTest {
 
     public static void main(String[] args) {
-        ArrayList<Employee> staff = new ArrayList<>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        System.out.printf("Before add: arrayList.size()=%d\n", arrayList.size());
 
-        staff.add(new Employee("carl", 7500, 1987, 12,15));
-        staff.add(new Employee("wkk", 15000, 1996, 12,2));
-        staff.add(new Employee("hhh", 20000, 1997, 2,14));
+        arrayList.add(1);
+        arrayList.add(3);
+        arrayList.add(5);
+        arrayList.add(7);
+        arrayList.add(9);
 
-        for(Employee e: staff){
-            System.out.println("name="+ e.getName() + ", salary="+e.getSalary()+", hireday="+e.getHirday());
+        System.out.printf("After ad: arrayList.size()=%d\n", arrayList.size());
+
+        System.out.println("Printing elemnents of arrayList");
+        // 三种方式进行遍历
+        // 第一种: 迭代器遍历
+        System.out.print("通过迭代器遍历");
+        Iterator<Integer> it = arrayList.iterator();
+        while (it.hasNext()){
+            System.out.print(it.next() + " ");
         }
+
+        System.out.println();
+
+        // 第二种: 通过索引值遍历
+        System.out.println("通过索引值遍历");
+        for(int i = 0; i< arrayList.size(); i++){
+            System.out.print(arrayList.get(i) + " ");
+        }
+
+        System.out.println();
+
+        // 第三种: for-each
+        System.out.println("for-each循环");
+        for(int i : arrayList){
+            System.out.print(i + " ");
+        }
+
+        //#########################
+        // toArray方法
+        //#########################
+
+        // 第一种: 最常用方法
+        Integer[] integers = arrayList.toArray(new Integer[0]);
+        System.out.println("最常用的toArray方法");
+
+        for(int c : integers){
+            System.out.print(c + " ");
+        }
+        System.out.println();
+        // 第二种: 易于理解
+        Integer[] integers1 = new Integer[arrayList.size()];
+
+        // 指定位置添加元素
+        arrayList.add(2, 100);
+        // 指定位置删除元素
+        arrayList.remove(2);
+        // 删除指定元素
+        arrayList.remove((Object)3);
+
+        // 判断是否包含有某元素
+        System.out.println("Arraylist contains 5 is: " + arrayList.contains(5));
+
+        // 清空ArrayList
+        arrayList.clear();
+        // 判断是否为空
+        System.out.println("Arraylist is empty: "+ arrayList.isEmpty());
+
 
     }
 }
