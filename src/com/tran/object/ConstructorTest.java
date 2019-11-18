@@ -1,4 +1,4 @@
-package com.tran.Object;
+package com.tran.object;
 
 import java.util.Random;
 

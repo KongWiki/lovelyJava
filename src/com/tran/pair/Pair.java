@@ -1,4 +1,4 @@
-package com.tran.Pair;
+package com.tran.pair;
 
 /**
  * @Time: 19-11-7下午8:46

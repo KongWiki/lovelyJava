@@ -1,4 +1,4 @@
-package com.tran.Array;
+package com.tran.array;
 
 /**
  * @Time: 19-10-13下午4:40

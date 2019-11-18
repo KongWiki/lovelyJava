@@ -1,4 +1,4 @@
-package com.tran.Enumerate;
+package com.tran.enumerate;
 
 import java.util.Scanner;
 

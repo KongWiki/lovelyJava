@@ -1,4 +1,4 @@
-package com.tran.IO;
+package com.tran.io;
 
 import java.util.Scanner;
 

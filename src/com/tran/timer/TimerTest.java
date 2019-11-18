@@ -1,10 +1,7 @@
-package com.tran.Timer;
-
-import sun.rmi.runtime.Log;
+package com.tran.timer;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 import java.util.Date;

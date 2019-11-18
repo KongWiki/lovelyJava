@@ -1,4 +1,4 @@
-package com.tran.Inheritance;
+package com.tran.inheritance;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,4 @@
-package com.tran.For50;
-
-import java.util.ArrayList;
+package com.tran.for50;
 
 /**
  * @Time: 19-10-16下午7:08

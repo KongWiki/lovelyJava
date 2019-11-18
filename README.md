@@ -294,5 +294,18 @@ Stack<int> // 创建一个可以存储int类型的栈
 
 ###  自动装箱、自动拆箱
 
+**自动装箱**: int -> Integer
+
+**自动拆箱**: Integer -> int
+
+
+## 集合
+![image](https://raw.githubusercontent.com/KongWiki/cloudImg/master/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.png)
+
+
+
+
+
+
 
 

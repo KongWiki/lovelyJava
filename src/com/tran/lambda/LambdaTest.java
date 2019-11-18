@@ -1,4 +1,4 @@
-package com.tran.Lambda;
+package com.tran.lambda;
 
 
 import java.util.*;

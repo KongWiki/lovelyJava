@@ -1,4 +1,4 @@
-package com.tran.Generic;
+package com.tran.generic;
 
 
 import java.util.ArrayList;

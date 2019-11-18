@@ -1,4 +1,4 @@
-package com.tran.Interfaces;
+package com.tran.interfaces;
 
 import java.util.Arrays;
 

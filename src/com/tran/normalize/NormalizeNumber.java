@@ -1,4 +1,4 @@
-package com.tran.Normalize;
+package com.tran.normalize;
 
 import java.util.ArrayList;
 import java.util.List;

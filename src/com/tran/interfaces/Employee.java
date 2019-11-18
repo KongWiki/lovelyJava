@@ -1,4 +1,4 @@
-package com.tran.Interfaces;
+package com.tran.interfaces;
 
 /**
  * @Time: 19-10-15下午5:35

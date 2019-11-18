@@ -1,4 +1,4 @@
-package com.tran.Inheritance;
+package com.tran.inheritance;
 
 /**
  * @Time: 19-10-15上午9:51
