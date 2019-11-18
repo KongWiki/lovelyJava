@@ -1,6 +1,5 @@
-package com.tran.arrayList;
+package com.tran.collection.arrayList;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**

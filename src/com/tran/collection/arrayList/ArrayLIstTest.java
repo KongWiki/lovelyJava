@@ -1,8 +1,4 @@
-package com.tran.arrayList;
-
-import com.tran.Array.Arra;
-import com.tran.Inheritance.Employee;
-import org.omg.CORBA.INTERNAL;
+package com.tran.collection.arrayList;
 
 import java.util.ArrayList;
 import java.util.Iterator;
