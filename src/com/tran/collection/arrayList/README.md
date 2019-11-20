@@ -241,3 +241,6 @@ public boolean add(E e) {
 ```
 
 只有`newCapacity` >`MAX_ARRAY_SIZE` 才回调用该方法, 方法中使用三元运算, 意思是若果`minCapacity`> `MAX_ARRAY_SIZE`   则`newCapacity`的容量大小为`Integer.MAX_VALUE`也就是2**31次方, 若是`minCapacity`< `MAX_ARRAY_SIZE`   则`newCapacity`的容量大小为`Integer.MAX_VALUE-8`
+
+
+

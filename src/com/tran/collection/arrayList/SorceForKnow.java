@@ -1,5 +1,7 @@
 package com.tran.collection.arrayList;
 
+import com.tran.array.Arra;
+
 import java.util.Arrays;
 
 /**
@@ -22,6 +24,26 @@ public class SorceForKnow {
         for(int b: arr3){
             System.out.print(b+ "");
         }
+
+        System.out.println("========================");
+        int[] c = new int[10];
+        c[0] = 0;
+        c[1] = 1;
+        c[2] = 2;
+        c[3] = 3;
+        System.arraycopy(c, 2, c, 3, 3);
+        c[2] = 99;
+        for (int i : c) {
+            System.out.print(i+" ");
+        }
+
+        System.out.println("========================");
+        int[] d = new int[3];
+        d[0] = 0;
+        d[1] = 1;
+        d[2] = 3;
+        int[] e = Arrays.copyOf(d, 10);
+        System.out.println("e.lenght="+e.length);
     }
 
 }
