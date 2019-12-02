@@ -244,3 +244,52 @@ public boolean add(E e) {
 
 
 
+#### ensureCapacity用法
+Arraylist源码中有一个ensureCapacity方法
+```java
+/***
+* 如有必要，增加此 ArrayList 实例的容量，
+* 以确保它至少可以容纳由minimum capacity参数指定的元素数。
+*/
+ public void ensureCapacity(int minCapacity) {
+        int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
+            // any size if not default element table
+            ? 0
+            // larger than default for default empty table. It's already
+            // supposed to be at default size.
+            : DEFAULT_CAPACITY;
+
+        if (minCapacity > minExpand) {
+            ensureExplicitCapacity(minCapacity);
+        }
+    }
+```
+**该方法适用于添加大量的元素, 以减少上文的增量重新分配的次数**
+```java
+ ArrayList<Object> list = new ArrayList<>();
+        final int N = 10000000;
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            list.add(i);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("使用ensureCapaticy方法之前: "+ (endTime - startTime));
+
+        list = new ArrayList<>();
+        list.ensureCapacity(N);
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            list.add(i);
+
+        }
+
+        endTime = System.currentTimeMillis();
+        System.out.println("使用ensureCapaticy方法之后: "+ (endTime -startTime));
+
+
+```
+
+```
+使用ensureCapaticy方法之前: 3345
+使用ensureCapaticy方法之后: 257
+```

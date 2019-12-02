@@ -78,5 +78,25 @@ public class ArrayLIstTest {
         System.out.println("Arraylist is empty: "+ arrayList.isEmpty());
 
 
+        ArrayList<Object> list = new ArrayList<>();
+        final int N = 10000000;
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            list.add(i);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("使用ensureCapaticy方法之前: "+ (endTime - startTime));
+
+        list = new ArrayList<>();
+        list.ensureCapacity(N);
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < N; i++) {
+            list.add(i);
+
+        }
+
+        endTime = System.currentTimeMillis();
+        System.out.println("使用ensureCapaticy方法之后: "+ (endTime -startTime));
+
     }
 }
