@@ -40,6 +40,41 @@
 ++m先自增在运算
 m++ 先运行在自增
 
+### String 
+
+String在Java中是**不可变的**, 在源码中(1.8) String 是用char[]数组进行存储的, 并且char[] 被声明为final, 所以 value数组在初始化之后,就不能再引用其他的数组.
+
+#### 不可变的好处
+
+**1. 可以缓存 hash 值**
+
+因为 String 的 hash 值经常被使用，例如 String 用做 HashMap 的 key。不可变的特性可以使得 hash 值也不可变，因此只需要进行一次计算。
+
+**2. String Pool 的需要**
+
+如果一个 String 对象已经被创建过了，那么就会从 String Pool 中取得引用。只有 String 是不可变的，才可能使用 String Pool。
+
+**3. 安全性**
+
+String 经常作为参数，String 不可变性可以保证参数不可变。例如在作为网络连接参数的情况下如果 String 是可变的，那么在网络连接过程中，String 被改变，改变 String 对象的那一方以为现在连接的是其它主机，而实际情况却不一定是。
+
+**4. 线程安全**
+
+String 不可变性天生具备线程安全，可以在多个线程中安全地使用。
+
+#### StringBuilder StringBuffer String
+
+**1. 可变性**
+
+- String 不可变
+- StringBuffer 和 StringBuilder 可变
+
+**2. 线程安全**
+
+- String 不可变，因此是线程安全的
+- StringBuilder 不是线程安全的
+- StringBuffer 是线程安全的，内部使用 synchronized 进行同步
+
 ### 输入输出
 * Scanner(InputStream in)
     * 用给定的输入流创建一个Scanner对象
@@ -143,13 +178,13 @@ ArrayLIst 是一个采用类型参数的泛型类，为了制定数组列表保�
 ArrayList<Employee> staff = new ArrayList<Employee>();
 ArrayList<Employee> staff = new ArrayList<>();
 * E get()
-    
+  
     * 获取元素
 * void set()
     * 添加元素
     * 设置数组指定位置的元素值，这个操作将覆盖原位置的原元素
 * E remove()
-    
+  
     * 删除元素， 并将后面的元素前移，被删除的元素有返回值返回
 * void add()
     * 向后移动元素，以便插入元素
@@ -301,6 +336,24 @@ Stack<int> // 创建一个可以存储int类型的栈
 
 ## 集合
 ![image](https://raw.githubusercontent.com/KongWiki/cloudImg/master/java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.png)
+
+
+# 整理知识点
+
+## 缓冲池
+* new Integet(123)与Intege.valueOf(123)的区别
+    * new Integer(123)会创建一个新的对象
+    * Integer.valueOf(123)会获取缓冲池中的对象, 多次调用会取得同一个对象的引用
+    以下是原理: Integer.valueOf()方法会首先从缓冲池中获取相应的数据, 若果存在则直接获取, 否者再重新创建
+    IntegerCache.low = -128, IntegerCache.high = 
+    ```java
+     public static Integer valueOf(int i) {
+             if (i >= IntegerCache.low && i <= IntegerCache.high)
+                 return IntegerCache.cache[i + (-IntegerCache.low)];
+             return new Integer(i);
+         }
+    ```
+**Integer缓冲池的大小默认是-128-127**
 
 
 
