@@ -14,6 +14,6 @@ public class SourceForKnow {
         h = m.hashCode();
         System.out.println(h);
         System.out.println(h >>> 16);
-   
+
     }
 }
