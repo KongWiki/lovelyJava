@@ -66,7 +66,8 @@ private static class Node<E> {
            int numNew = a.length;
            if (numNew == 0)
                return false;
-   
+   		// pred: 
+        	// succ: 
            Node<E> pred, succ;
            if (index == size) {
                succ = null;
@@ -98,6 +99,8 @@ private static class Node<E> {
            return true;
        }
    ```
+
+   `addAll()`主要为就是依次的遍历已有集合的所有元素，然后依次进行插入(尾插法，保证插入的顺序不会和最后的顺序不变)
 
 2. 判断越界方法
 
