@@ -1,7 +1,5 @@
 package com.tran.collection.linkedList;
 
-import com.tran.collection.linkedList.impl.CircularArrayQueue;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

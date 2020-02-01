@@ -8,7 +8,7 @@ import java.util.List;
  * @Author: kongwiki
  * @Email: kongwiki@163.com
  */
-public class LinkedLIstForKnow {
+public class SourceForKnow {
     public static void main(String[] args) {
         LinkedList<String> ll = new LinkedList<>();
         ll.add("我");
@@ -23,16 +23,16 @@ public class LinkedLIstForKnow {
         aa.add("韩欢欢");
         System.out.println("当前的LinkedList为：" + aa);
         System.out.println("addAll()? " + aa.addAll(ll));
-        System.out.println("使用addAll()之后的链表W为: "+ aa);
+        System.out.println("使用addAll()之后的链表W为: " + aa);
         System.out.println();
         System.out.println();
         List list = new LinkedList();
         list.add(11);
         list.add(0);
         System.out.println(list.size());
-        if(list.size()<0){
-            throw  new IndexOutOfBoundsException("size<0");
-        }else {
+        if (list.size() < 0) {
+            throw new IndexOutOfBoundsException("size<0");
+        } else {
             throw new IndexOutOfBoundsException("size() > 0");
         }
 
