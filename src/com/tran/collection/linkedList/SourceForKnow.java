@@ -1,5 +1,7 @@
 package com.tran.collection.linkedList;
 
+import org.omg.PortableInterceptor.INACTIVE;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,15 +28,28 @@ public class SourceForKnow {
         System.out.println("使用addAll()之后的链表W为: " + aa);
         System.out.println();
         System.out.println();
-        List list = new LinkedList();
-        list.add(11);
-        list.add(0);
-        System.out.println(list.size());
-        if (list.size() < 0) {
-            throw new IndexOutOfBoundsException("size<0");
-        } else {
-            throw new IndexOutOfBoundsException("size() > 0");
-        }
+//        List list = new LinkedList();
+//        list.add(11);
+//        list.add(0);
+//        System.out.println(list.size());
+//        if (list.size() < 0) {
+//            throw new IndexOutOfBoundsException("size<0");
+//        } else {
+//            throw new IndexOutOfBoundsException("size() > 0");
+//        }
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        LinkedList<Integer> temp = new LinkedList<>();
+        System.out.println(temp.addAll(linkedList));
+
+        LinkedList<Integer> linkedList1 = new LinkedList<>();
+        linkedList1.add(1);
+        linkedList1.add(2);
+        linkedList1.add(3);
+        linkedList1.add(1, 4);
+        System.out.println("linkedlist: " + linkedList1);
+
+        System.out.println("set(3, 5): " + linkedList1.set(3, 5));
+        System.out.println("After set(3, 5)" + linkedList1);
 
 
     }
