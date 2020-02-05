@@ -12,8 +12,10 @@ LinkedList底层数据结构是链表，是实现了List接口和Deque接口的�
 
 按照正常的逻辑， 首先了解其构造方法， 之后了解常用的API(CRUD)操作即可。
 
-* [ ] addAll();
+* [x] addAll();
 * [x] add();
+* [x] remove();
+* [x] get();
 
 ### 从节点数据结构开始
 
