@@ -12,10 +12,29 @@ import java.util.Map;
  */
 public class SeekSource {
     public static void main(String[] args) {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("1", Integer.valueOf(1));
-        map.put("2", Integer.valueOf(1));
-        map.put("3", Integer.valueOf(1));
-        System.out.println(map.get("1"));
+        int a = 28;
+        printInfo(a);
+        System.out.println(">>1");
+        printInfo(a>>1);
+        System.out.println(">>2");
+        printInfo(a>>2);
+        System.out.println(">>>3");
+        printInfo(a>>>3);
+        System.out.println(">>3");
+        printInfo(a>>3);
+        System.out.println();
+        a = -28;
+        printInfo(-28);
+        printInfo(a>>>3);
+    }
+
+
+    /**
+     * 用于测试
+     * >> <<
+     * >>>
+     */
+    private static void printInfo(int num){
+        System.out.println(num + " 的二进制为: " + Integer.toBinaryString(num));
     }
 }

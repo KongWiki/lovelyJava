@@ -10,7 +10,7 @@ LinkedList底层数据结构是链表，是实现了List接口和Deque接口的�
 
 ### 阅读套路
 
-按照正常的逻辑， 首先了解其构造方法， 之后了解常用的API(CRUD)操作即可。
+按照正常的逻辑，首先了解其构造方法， 之后了解常用的API(CRUD)操作即可。
 
 * [x] addAll();
 * [x] add();
@@ -21,19 +21,7 @@ LinkedList底层数据结构是链表，是实现了List接口和Deque接口的�
 
 ![image](https://raw.githubusercontent.com/KongWiki/cloudImg/master/linkedlistNode.jpeg)
 
-```java
-private static class Node<E> {
-        E item;
-        Node<E> next;
-        Node<E> prev;
-
-        Node(Node<E> prev, E element, Node<E> next) {
-            this.item = element;
-            this.next = next;
-            this.prev = prev;
-        }
-    }
-```
+按照正常的逻辑， 首先基础的数据构造, 然后了解其构造方法， 之后了解常用的API(CRUD)操作即可。
 
 其实一个很明显的双向链表的数据结构。
 
