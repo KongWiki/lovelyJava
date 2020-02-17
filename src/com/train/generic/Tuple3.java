@@ -1,0 +1,20 @@
+package com.train.generic;
+
+/**
+ * @Time: 19-12-12下午9:50
+ * @Author: kongwiki
+ * @Email: kongwiki@163.com
+ */
+public class Tuple3<A, B, C> extends Tuple2<A, B > {
+    public final C a3;
+
+    public Tuple3(A a, B b, C c) {
+        super(a, b);
+        a3 = c;
+    }
+
+    @Override
+    public String rep() {
+        return super.rep() + ", " + a3;
+    }
+}

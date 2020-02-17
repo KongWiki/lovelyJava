@@ -345,7 +345,7 @@ Stack<int> // 创建一个可以存储int类型的栈
     * new Integer(123)会创建一个新的对象
     * Integer.valueOf(123)会获取缓冲池中的对象, 多次调用会取得同一个对象的引用
     以下是原理: Integer.valueOf()方法会首先从缓冲池中获取相应的数据, 若果存在则直接获取, 否者再重新创建
-    IntegerCache.low = -128, IntegerCache.high = 
+    IntegerCache.low = -128, IntegerCache.high = 127
     ```java
      public static Integer valueOf(int i) {
              if (i >= IntegerCache.low && i <= IntegerCache.high)
