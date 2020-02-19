@@ -1,6 +1,6 @@
-## JVM 初探
+# JVM 初探
 
-### 基本尝试	问题
+## 基本尝试	问题
 
 * 谈谈你对JVM的理解， Java8虚拟机和之前的变化
 * 什么是OOM， 什么是溢栈(StackOverFlow Error)？ 如何分析
@@ -8,7 +8,7 @@
 * 内存快照如何抓取， 怎么分析dump文件
 * 谈谈JVM中， 类加载器的认识
 
-#### JVM位置
+### JVM位置
 
 ![](https://raw.githubusercontent.com/KongWiki/cloudImg/master/jvm.png)
 
@@ -16,23 +16,23 @@
 
 
 
-#### JVM体系结构
+### JVM体系结构
 
 ![](https://raw.githubusercontent.com/KongWiki/cloudImg/master/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png)
 
 
 
-#### 类加载器
+### 类加载器
 
-**基本概念**
+#### **基本概念**
 
 顾名思义，类加载器（class loader）用来加载 Java 类到 Java 虚拟机中。一般来说，Java 虚拟机使用 Java 类的方式如下：Java 源程序（.java 文件）在经过 Java 编译器编译之后就被转换成 Java 字节代码（.class 文件）。类加载器负责读取 Java 字节代码，并转换成 `java.lang.Class`类的一个实例。每个这样的实例用来表示一个 Java 类。通过此实例的 `newInstance()`方法就可以创建出该类的一个对象。实际的情况可能更加复杂，比如 Java 字节代码可能是通过工具动态生成的，也可能是通过网络下载的。
 
-**类加载器的主要功能示意图**
+#### **类加载器的主要功能示意图**
 
 ![imgae](/home/kongweikun/IdeaProjects/JavaTrain/src/com/train/jvm/README.assets/类加载器-1581910732753.png)
 
-**类加载器的树状组织结构**
+#### **类加载器的树状组织结构**
 
 Java 中的类加载器大致可以分成两类，一类是系统提供的，另外一类则是由 Java 应用开发人员编写的。系统提供的类加载器主要有下面三个：
 
@@ -42,7 +42,7 @@ Java 中的类加载器大致可以分成两类，一类是系统提供的，另
 
 除了系统提供的类加载器以外，开发人员可以通过继承 `java.lang.ClassLoader`类的方式实现自己的类加载器，以满足一些特殊的需求。
 
-**Java 虚拟机是如何判定两个 Java 类是相同的：**
+#### **Java 虚拟机是如何判定两个 Java 类是相同的：**
 
 1. ==类的全名是否相同（com.xxx.xxx.xx）==
 2. ==加载此类的类加载器是否一样==
@@ -51,7 +51,9 @@ Java 中的类加载器大致可以分成两类，一类是系统提供的，另
 
 比如一个 Java 类 `com.example.Sample`，编译之后生成了字节代码文件 `Sample.class`。两个不同的类加载器 `ClassLoaderA`和 `ClassLoaderB`分别读取了这个 `Sample.class`文件，并定义出两个 `java.lang.Class`类的实例来表示这个类。这两个实例是不相同的。对于 Java 虚拟机来说，它们是不同的类。试图对这两个类的对象进行相互赋值，会抛出运行时异常 `ClassCastException`
 
+#### 如何编写自己的类加载器
 
+自己编写的ClassLoader继承ClassLoader即可， 只需要覆写父类的`findClass()`即可，最好不要覆写 `loadClass()`方法
 
 #### 双亲委派机制
 
@@ -79,7 +81,21 @@ Java虚拟机的第一个类加载器是Bootstrap，这个加载器很特殊，*
 
 #### 沙箱安全机制
 
-#### Native（本地方法栈）
+
+
+### PC寄存器
+
+==线程私有==
+
+每个线程都有一个程序计数器， 是线程私有的。
+
+**此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域**
+
+
+
+### Native（本地方法栈）
+
+==线程私有==
 
 凡是带了native关键字的，说明java的作用范围达不到了，会去调用底层c语言的库
 
@@ -91,39 +107,39 @@ JNI: 拓展java的使用，融合不同的编程语言
 
 在内存区域中专门开辟了一块标记区域： Native Method Stack ， 登记Native方法
 
-#### PC寄存器
 
-每个线程都有一个程序计数器， 是线程私有的。
 
-#### 方法区
+### Java虚拟机栈
 
-==静态变量、常量、类信息（构造方法、接口定义）、运行时的常量池存在方法区中， 但是实例变量在堆内存中， 和方法区无关==
-
-static、 final、Class、常量池
-
-#### Java虚拟机栈
+==线程私有==
 
 8大基本类型， 对象引用， 实例的方法
 
-#### 三种JVM
+会出现OutOfMemoryError 和 StackOverFlowError异常
 
-1. HotSpot
-2. JRockit
-3. J9VM JIT(IBM)
 
-#### Java堆
+
+### Java堆
+
+==线程共享==
+
+![image](/home/kongweikun/IdeaProjects/JavaTrain/src/com/train/jvm/README.assets/java堆.png)
 
 Heap, 一个JVM只有一个堆内存，堆内存的大小可以调节
 
-类加载器读了类文件之后，方法、变量等保存我们的引用类型的真实对象
+此内存区域的唯一目的就是存放对象实例，**几乎所有的对象实例都在这里分配内存**。
 
-**细分为三个区域**
+Java堆是垃圾收集器管理的主要区域，因此很多时候也被称做“**GC堆**”
+
+如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。
+
+**细分为两个个区域**
 
 * 新生区
 
 * 养老区
 
-* 永久区
+* ~~永久区~~
 
   常驻内存， 用来存放JDK自身携带的Class对象， Interface元数据， 存储java运行时的一些环境
 
@@ -137,9 +153,31 @@ Heap, 一个JVM只有一个堆内存，堆内存的大小可以调节
 
 #### 新生区、老年区
 
+新生区可以细分为三个部分：
+
+* EdenSpace
+* FromSpace
+* ToSpace
+
+默认三者的分配比例为==8:1:1==
+
+
+
 #### 永久区
 
 #### 堆内存调优
+
+![image](/home/kongweikun/IdeaProjects/JavaTrain/src/com/train/jvm/README.assets/参数对应的各区域的图.jpeg)
+
+**控制参数**:
+
+- -Xms设置堆的初始空间大小。
+- -Xmx设置堆的最大空间大小。
+- -XX:NewSize设置新生代最小空间大小。
+- -XX:MaxNewSize设置新生代最大空间大小。
+- -XX:PermSize设置永久代最小空间大小。
+- -XX:MaxPermSize设置永久代最大空间大小。
+- -Xss设置每个线程的堆栈大小。
 
 调节程序所占总内存的大小：
 
@@ -155,7 +193,47 @@ MAT, Jprofiler作用:
 
 
 
-####  GC（垃圾回收器）
+### 方法区
+
+==线程共享==
+
+方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，**它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。**虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做Non-Heap（非堆），目的应该是与Java堆区分开来。
+
+==运行时的常量池存在方法区中， 但是实例变量在堆内存中， 和方法区无关==
+
+static、 final、Class、常量池
+
+线程共享区域，为了与Java堆区分， 方法区还有一个别名： Non-Heap（非堆）
+
+**栈又分为java虚拟机栈和本地方法栈主要用于方法的执行。**
+
+方法区有时被称为持久代（PermGen）
+
+方法的执行都是伴随着线程的。原始类型的本地变量以及引用都存放在线程栈中。而引用关联的对象比如String，都存在在堆中。
+
+```java
+public class HelloWorld {
+    private static Logger logger = Logger.getLogger(HelloWorld.class.getName());
+    public void sayHello(String message){
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.YYYY");
+        String today = format.format(new Date());
+    }
+
+    public static void main(String[] args) {
+        System.out.println(HelloWorld.class.getName());
+    }
+}
+```
+
+![image](/home/kongweikun/IdeaProjects/JavaTrain/src/com/train/jvm/README.assets/Screenshot from 2020-02-19 17-22-49.png)
+
+### 三种JVM
+
+1. HotSpot
+2. JRockit
+3. J9VM JIT(IBM)
+
+###  GC（垃圾回收器）
 
 JVM在进行垃圾回收的时候， 并不是对这三个区域进行统一回收， 大部分时候，回收的都是新生代
 
@@ -210,7 +288,9 @@ GC两类：轻GC（普通GC）、 重GC（全局GC）
 
 
 
-#### JMM
+
+
+### JMM
 
 
 
@@ -220,4 +300,5 @@ GC两类：轻GC（普通GC）、 重GC（全局GC）
 
 * [关于Java类加载双亲委派机制的思考（附一道面试题）](https://www.cnblogs.com/lanxuezaipiao/p/4138511.html)
 * [java中的安全模型(沙箱机制)](https://www.cnblogs.com/MyStringIsNotNull/p/8268351.html)
+* Java虚拟机II
 
