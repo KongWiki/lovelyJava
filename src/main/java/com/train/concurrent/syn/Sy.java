@@ -6,4 +6,7 @@ package com.train.concurrent.syn;
  * @Email: kongwiki@163.com
  */
 public class Sy {
+    synchronized public void say(){
+        System.out.println("hello");
+    }
 }

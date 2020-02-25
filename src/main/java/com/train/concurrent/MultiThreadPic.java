@@ -18,7 +18,7 @@ public class MultiThreadPic extends Thread {
     public void run() {
         WebDownloader downloader = new WebDownloader();
         downloader.downloader(url, name);
-        System.out.println("文件"+name + "下载完成");
+        System.out.println("文件" + name + "下载完成");
     }
 
     public static void main(String[] args) {
