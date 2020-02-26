@@ -9,7 +9,9 @@
 3. 右子树所有节点的值均大于根节点的值
 4. 中序遍历序列为升序
 
-#### 代码实现：
+#### 实现二插排序树：
+
+##### 节点定义、插入
 
 * 节点： AVLEntry
 * 字典：AVLMap
@@ -17,7 +19,7 @@
   * boolean isEmpty() 判断map是否为空
   * V put(K key, V value) 添加元素
 
-#### 迭代器
+##### 迭代器
 
 * LeetCode173 binary search tree iterator
 * 要点： 利用中序遍历
@@ -29,6 +31,50 @@
   * next 下一个节点的值
   * remove 线程安全问题
 * AVLMap继承Iterable， 并重写Iterator方法， 返回AVL迭代器即可
+
+##### 查找
+
+###### **原理**：
+
+
+
+1. 若是根节点的值小于key， 递归从右子树查找
+2. 若是根节点的值大于key， 递归从左子树查找
+3. 如是根节点等于key， 成功
+4. 若是子树为空， 失败
+
+###### **实现**
+
+模拟TreeMap的代码结构， 实现以下方法
+
+1. AVLEntry getEntry(K key) 私有方法 主要查找逻辑
+2. boolean containsKey(K key) 是否能找到关键字
+3. V get(K key) 根据关键字返回对应的value
+4. boolean containsValue(V value) 能够找到value
+
+##### 删除（重点）
+
+###### 原理
+
+删除操作较为繁琐， 需要考虑断链的情况，以及删除之后， 还需满足BST的特性
+
+共分为三种情况， 假设删除的节点为p， 父节点为f
+
+1. p为叶子节点， 直接删除
+2. p的左子树（右子树）不为空，删除之后， 其左子树（右子树）填补p的空缺位置
+3. p既有左子树又有右子树， 找到右子树的最小值节点M（左子树的最大值）将该值替换p的值，之后按照1、2两种情况删除M即可
+
+###### 实现
+
+1. AVLEntry<K, V> deleteEntry()  递归函数（主逻辑）
+
+2. V remote(K key) 删除关键字key 返回对应的value
+
+3. void levelOrder 辅助函数 层次遍历
+
+   用于输出观察
+
+
 
 ### 红黑树
 
