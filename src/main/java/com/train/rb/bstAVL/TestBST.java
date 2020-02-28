@@ -3,10 +3,7 @@ package com.train.rb.bstAVL;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @Time: 20-2-25上午11:29
@@ -23,6 +20,7 @@ public class TestBST {
         for (int i = 0; i < MAX1; i++) {
             map.put(random.nextInt(MAX1), random.nextInt(MAX1) + " ");
         }
+        map.checkBalance();
         Iterator<AVLEntry<Integer, String>> iterator = map.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next().key + " ");
@@ -68,7 +66,7 @@ public class TestBST {
     }
 
     @Test
-    public void testQueryWithJDK(){
+    public void testQueryWithJDK() {
         AVLMap<Integer, String> map1 = new AVLMap<>();
         TreeMap<Integer, String> map2 = new TreeMap<>();
         int max3 = 16;
@@ -78,19 +76,75 @@ public class TestBST {
     }
 
     @Test
-    public void testRemoveCase1(){
+    public void testRemoveCase1() {
+        AVLMap<Integer, String> map = new AVLMap<>();
+        int[] arr = {5, 2, 6, 1, 4, 7, 3};
+        for (int i : arr) {
+            map.put(i, i + "");
+        }
+        map.remote(1);
+        map.levelOrder();
+        Iterator<AVLEntry<Integer, String>> it1 = map.iterator();
+        while (it1.hasNext()) {
+            System.out.print(it1.next().getKey() + " ");
+        }
+        System.out.println();
+    }
+
+    @Test
+    public void testRemoveCase2() {
+        AVLMap<Integer, String> map = new AVLMap<>();
+        int[] arr = {5, 2, 6, 1, 4, 7, 3};
+        for (int i : arr) {
+            map.put(i, i + "");
+        }
+        String oldValue = map.remote(4);
+        map.levelOrder();
+        System.out.println(oldValue);
+
+    }
+
+    @Test
+    public void testRemoveCase3(){
         AVLMap<Integer, String> map = new AVLMap<>();
         int[] arr = {5, 2, 6, 1, 4, 7, 3};
         for (int i : arr) {
             map.put(i, i+"");
         }
-        map.remote(1);
+        map.remote(2);
         map.levelOrder();
-        Iterator<AVLEntry<Integer, String>> it1 = map.iterator();
-        while (it1.hasNext()){
-            System.out.print(it1.next().getKey());
+
+    }
+
+    // 泛型测试
+    @Test
+    public void  test(){
+        AVLMap<Person, String> map = new AVLMap<>(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.id - o2.id;
+            }
+        });
+        int MAX = 16;
+        Random random = new Random();
+        for (int i = 0; i < MAX; i++) {
+            map.put(new Person(random.nextInt(MAX), random.nextInt(MAX) + ""), random.nextInt(MAX) + "");
         }
-        System.out.println();
+        Iterator<AVLEntry<Person, String>> itr = map.iterator();
+        while (itr.hasNext()){
+            System.out.println(itr.next().getKey() + " ");
+        }
+    }
+
+    @Test
+    public void AESCAVLMap(){
+        int MAX = 65535;
+        AVLMap<Integer, String> map = new AVLMap<>();
+        Random random = new Random();
+        for (int i = 0; i < MAX; i++) {
+            map.put(random.nextInt(MAX), random.nextInt(MAX) + "");
+        }
+        map.checkBalance();
     }
 
 }

@@ -12,6 +12,9 @@ public class AVLEntry<K, V> implements Map.Entry<K, V> {
     public V value;
     public AVLEntry<K, V> left;
     public AVLEntry<K, V> right;
+    // 将BST ---> AVL
+    // 记录AVL的高度
+    public int height=1;
 
     @Override
     public K getKey() {
@@ -47,11 +50,10 @@ public class AVLEntry<K, V> implements Map.Entry<K, V> {
 
     @Override
     public String toString() {
-        return "AVLEntry{" +
-                "key=" + key +
-                ", value=" + value +
-                ", left=" + left +
-                ", right=" + right +
-                '}';
+        return "AVLEntry{ " +
+                "key= " + key +
+                ", value= " + value
+                +", height= " + height
+                +" }";
     }
 }
