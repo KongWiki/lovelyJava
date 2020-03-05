@@ -139,7 +139,7 @@ AVL是一种自平衡的二叉树
 
    1. 右旋
 
-      ![image](README.assets/Screenshot from 2020-02-26 21-16-40.png)
+      ![右旋](https://raw.githubusercontent.com/KongWiki/lovelyJava/master/src/main/java/com/train/rb/README.assets/Screenshot from 2020-02-26 21-16-40.png)
 
    2. 先左旋再右旋
 
