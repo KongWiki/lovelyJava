@@ -321,6 +321,10 @@ public class GenericsWildcardDemo {
 }
 ```
 
+### 泛型约束
+
+[Restrictions on Generics](https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html#instantiate)
+
 
 
 ### 泛型实践
