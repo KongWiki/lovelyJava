@@ -95,7 +95,18 @@ public interface Runnable{
 
 #### synchronized关键字
 
+> Java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。
+
 **锁定一个对象**
+
+**疑问：**
+
+1. 如何保证同一时刻至多只有一个线程执行该段代码
+2. **保证在同一时刻最多只有一个线程执行该段代码**的意义
+
+synchronized关键字保证了操作的**原子性**
+
+
 
 **使用一**
 
@@ -170,6 +181,10 @@ public class T3 {
 
 
 synchronized方法在运行时， 其他非synchronized方法是可以运行的，但是其他synchronized方法需要等待当前运行的synchronized释放锁（可能会出现脏读现象)
+
+
+
+
 
 #### Volatile
 
