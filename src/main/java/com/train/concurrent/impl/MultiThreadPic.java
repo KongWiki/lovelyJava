@@ -1,4 +1,6 @@
-package com.train.concurrent;
+package com.train.concurrent.impl;
+
+import com.train.concurrent.WebDownloader;
 
 /**
  * @Time: 20-2-21上午11:50

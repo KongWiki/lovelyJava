@@ -1,4 +1,4 @@
-package com.train.concurrent;
+package com.train.concurrent.impl;
 
 /**
  * @Time: 20-2-21上午11:07
