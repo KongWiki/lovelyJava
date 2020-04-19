@@ -5,7 +5,7 @@ package com.train.concurrent.commu;
  * @Author: kongwiki
  * @Email: kongwiki@163.com
  */
-public class Demo {
+public class waitNotify {
     private static Object lock = new Object();
     static class A implements Runnable{
 
