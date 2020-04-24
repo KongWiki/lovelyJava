@@ -39,7 +39,5 @@ public class CopyFile {
         buffer.flip();
         fcout.write(buffer);
 
-
-
     }
 }

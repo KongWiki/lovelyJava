@@ -1,4 +1,4 @@
-package com.train.io.nio;
+package com.train.io.nio.buffer;
 
 import java.nio.ByteBuffer;
 
@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
  * @Author: kongwiki
  * @Email: kongwiki@163.com
  */
-public class BufferTests {
+public class BufferIndexs {
     public static void main(String[] args) {
         // 创建缓冲区
         ByteBuffer buffer = ByteBuffer.allocate(1024);
@@ -20,7 +20,7 @@ public class BufferTests {
 
         System.out.println("--------------------------------");
 
-        String s = "abc";
+        String s = "abcd";
         buffer.put(s.getBytes());
 
         //buffer添加数据之后，四个变量的值
@@ -42,7 +42,7 @@ public class BufferTests {
         System.out.println("读完之后---->capacity---->" + buffer.capacity());
         System.out.println("读完之后---->position---->" + buffer.position());
         System.out.println("读完之后---->mark---->" + buffer.mark());
-        System.out.println("----------------情况缓冲区-------------");
+        System.out.println("----------------清空缓冲区-------------");
         buffer.clear();
         System.out.println("清空之后---->limit---->" + buffer.limit());
         System.out.println("清空之后---->capacity---->" + buffer.capacity());
