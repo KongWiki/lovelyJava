@@ -1,8 +1,11 @@
 package com.train.concurrent.pool;
 
+import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
 import com.train.concurrent.pool.communication.Notify;
+import com.train.concurrent.syn.s_01.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.nio.ch.ThreadPool;
 
 import java.sql.Time;
 import java.util.Set;
@@ -55,11 +58,82 @@ public class PoolByMySelf {
     private volatile Set<Worker> workers;
 
 
+    public PoolByMySelf(int corePoolSize, int maxPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workerQueue, Notify notify){
+        this.corePoolSize = corePoolSize;
+        this.maxPoolSize = maxPoolSize;
+        this.keepAliveTime = keepAliveTime;
+        this.unit = unit;
+        this.workerQueue = workerQueue;
+        this.notify = notify;
+
+        workers  = new ConcurrentSkipListSet<>();
+    }
+
+    public <T> Future<T> submit(Callable<T> callable) {
+        FutureTask<T> future = new FutureTask(callable);
+        execute(future);
+        return future;
+    }
+
+    private void execute(Runnable runnable) {
+        if(runnable == null){
+            throw new NullPointerException("runnable nullPointerException");
+        }
+        if(isShutDown.get()){
+            LOGGER.info("线程池已经关闭，不能提交任务");
+        }
+        totalTask.incrementAndGet();
+        if(workers.size() < corePoolSize){
+            addWorker(runnable);
+            return;
+        }
+
+        boolean offer = workerQueue.offer(runnable);
+        if(!offer){
+            // 如果小于最大线程数量
+            if(workers.size() < maxPoolSize){
+                addWorker(runnable);
+                return;
+            }else {
+                LOGGER.error("超过最大线程池最大数量");
+                try{
+                    workerQueue.put(runnable);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void addWorker(Runnable runnable) {
+        Worker worker = new Worker(runnable, true);
+
+    }
+
+
     private final class Worker extends Thread{
+        private Runnable task;
+
+        private Thread thread;
+        /**
+         * true --> 创建新的线程执行
+         * false --> 从队列里获取线程执行
+         */
+        private boolean isNewTask;
+
+        public Worker(Runnable task, boolean isNewTask){
+            this.task = task;
+            this.isNewTask = isNewTask;
+            thread = this;
+        }
+
         @Override
         public void run() {
             super.run();
         }
     }
+
+
+
 
 }
