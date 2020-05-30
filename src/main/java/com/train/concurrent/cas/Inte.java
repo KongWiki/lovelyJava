@@ -1,4 +1,4 @@
-package com.train.concurrent.atomic;
+package com.train.concurrent.cas;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

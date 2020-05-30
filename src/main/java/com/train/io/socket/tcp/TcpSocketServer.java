@@ -1,4 +1,4 @@
-package com.train.socket.tcp;
+package com.train.io.socket.tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;

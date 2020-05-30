@@ -1,11 +1,10 @@
-package com.train.socket.tcp;
+package com.train.io.socket.tcp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 
 /**
  * @Time: 2020/5/15下午8:55

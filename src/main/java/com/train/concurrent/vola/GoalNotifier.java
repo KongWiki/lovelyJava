@@ -34,7 +34,7 @@ public class GoalNotifier implements Runnable{
 
         thread.start();
 
-        Thread.sleep(200);
+        Thread.sleep(2000);
         notifier.setGoal(true);
     }
 }

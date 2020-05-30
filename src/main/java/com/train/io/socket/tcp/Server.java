@@ -1,4 +1,4 @@
-package com.train.socket.tcp;
+package com.train.io.socket.tcp;
 
 import java.io.IOException;
 import java.net.ServerSocket;

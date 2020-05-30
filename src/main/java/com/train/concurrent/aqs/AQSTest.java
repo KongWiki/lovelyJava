@@ -10,6 +10,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class AQSTest {
     public static void main(String[] args) {
-        AbstractQueuedSynchronizer abs;
+
     }
 }

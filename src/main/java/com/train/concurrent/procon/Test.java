@@ -1,11 +1,5 @@
 package com.train.concurrent.procon;
 
-import com.train.concurrent.atomic.Inte;
-
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-
 /**
  * @Time: 2020/4/22下午9:26
  * @Author: kongwiki
